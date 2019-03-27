@@ -15,14 +15,45 @@
     integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y"
     crossorigin="anonymous"
   />
+  <script>
+    // Set the date we're counting down to
+    var countDownDate = new Date("May 23, 2019 00:00:00").getTime();
+    
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+    
+      // Get todays date and time
+      var now = new Date().getTime();
+        
+      // Find the distance between now and the count down date
+      var distance = countDownDate - now;
+        
+      // Time calculations for days, hours, minutes and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+      // Output the result in an element with id="demo"
+      document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+      + minutes + "m " + seconds + "s ";
+        
+      // If the count down is over, write some text 
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = "EXPIRED";
+      }
+    }, 1000);
+    </script>
   <body">
     <div
       class="bg-indigo-darkest flex flex-col h-screen justify-center items-center text-center"
     >
       <div>
-        <h1 class="text-5xl hover:text-green text-white flex items-center">
-          INDIA 2019
+        <h1 class="font-sans text-5xl hover:text-green text-white flex items-center">
+          Do you know India's Pulse?
         </h1>
+        <p class="m-8 font-mono text-3xl hover:text-green text-white" id="demo"></p>
       </div>
     </div>
     <div class="flex justify-center items-center">
